@@ -3,7 +3,7 @@
 
 Machine-readable subscriber certificate profiles for the CA/Browser Forum *Baseline Requirements for the Issuance and Management of Publicly-Trusted S/MIME Certificates* (S/MIME BR), written against the Infrared certificate profile schema developed by Corey Bonnell:
 
-    https://infrared.turbolightsolutions.com/infrared-profile-2026-10-02.schema.json
+    https://infrared.turbolightsolutions.com/infrared-profile-2026-10-23.schema.json
 
 ## Target version
 
@@ -48,8 +48,8 @@ Profile-level `org` is `cabforum` and `spec` is `smime-br-1.0.16`.
   SHA-256/384/512, Ed25519, Ed448, ML-DSA-44/65/87. Each encoding was verified
   by decoding it with OpenSSL.
 * The twelve reserved policy identifiers from SBR 7.1.6.1 (only the eight
-  Strict and Multipurpose ones are referenced), `id-kp-emailProtection` and
-  `id-kp-clientAuth`.
+  Strict and Multipurpose ones are referenced), `id-kp-emailProtection`,
+  `id-kp-clientAuth`, `id-ad-ocsp` and `id-ad-caIssuers`.
 
 **Blocks** (used with `$use`)
 

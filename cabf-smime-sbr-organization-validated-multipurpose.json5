@@ -1,5 +1,5 @@
 {
-  "$schema": "https://infrared.turbolightsolutions.com/infrared-profile-2026-10-02.schema.json",
+  "$schema": "https://infrared.turbolightsolutions.com/infrared-profile-2026-10-23.schema.json",
   "type": "certificate",
   "name": "cabf-smime-sbr-organization-validated-multipurpose",
   "version": "1.0.0",
@@ -79,8 +79,8 @@
               "0x0c",
               "0x13"
             ],
-            "valueMatch": "^[A-Z]{3}[A-Z]{2}(\\+[A-Z0-9]{1,3})?-.+$",
-            "description": "SHALL be present and SHALL contain a Registration Reference formatted per SBR Appendix A: 3-character scheme identifier, 2-character country code (XG for global schemes), optional '+' subdivision for NTR, '-', then the reference (SBR 7.1.4.2.2 d)."
+            "valueMatch": "^(GOV[A-Z]{2}(\\+[A-Z0-9]{1,3})?|([A-FH-Z][A-Z]{2}|G[A-NP-Z][A-Z]|GO[A-UW-Z])[A-Z]{2}(\\+[A-Z0-9]{1,3})?-.+)$",
+            "description": "SHALL be present and SHALL contain a Registration Reference formatted per SBR Appendix A: 3-character scheme identifier, 2-character country code (XG for global schemes), optional '+' subdivision for NTR, '-', then the reference (SBR 7.1.4.2.2 d). The GOV scheme is the exception: a GOV identifier is the scheme and country code (and optional '+' subdivision) only, with no '-' and no reference."
           }
         },
         {
@@ -178,7 +178,9 @@
             "ordered": false,
             "policies": [
               {
-                "policyIdentifier": "%policy_ov_multipurpose%",
+                "policyIdentifier": {
+                  "valueEq": "%policy_ov_multipurpose%"
+                },
                 "clause": "7.1.6.4",
                 "policyQualifiers": {
                   "qualifiers": [

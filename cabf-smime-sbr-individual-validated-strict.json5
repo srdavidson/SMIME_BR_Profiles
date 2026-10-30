@@ -1,5 +1,5 @@
 {
-  "$schema": "https://infrared.turbolightsolutions.com/infrared-profile-2026-10-02.schema.json",
+  "$schema": "https://infrared.turbolightsolutions.com/infrared-profile-2026-10-23.schema.json",
   "type": "certificate",
   "name": "cabf-smime-sbr-individual-validated-strict",
   "version": "1.0.0",
@@ -166,7 +166,9 @@
             "ordered": false,
             "policies": [
               {
-                "policyIdentifier": "%policy_iv_strict%",
+                "policyIdentifier": {
+                  "valueEq": "%policy_iv_strict%"
+                },
                 "clause": "7.1.6.4",
                 "policyQualifiers": {
                   "qualifiers": [

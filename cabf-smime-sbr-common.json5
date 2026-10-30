@@ -1,5 +1,5 @@
 {
-  "$schema": "https://infrared.turbolightsolutions.com/infrared-profile-2026-10-02.schema.json",
+  "$schema": "https://infrared.turbolightsolutions.com/infrared-profile-2026-10-23.schema.json",
   "name": "cabf-smime-sbr-1.0.16-common",
   "version": "1.1.0",
   "description": "Shared definitions for the CA/Browser Forum S/MIME Baseline Requirements v1.0.16 Strict and Multipurpose generation subscriber profiles: AlgorithmIdentifier encodings, reserved policy identifiers, and extension blocks reused by the four certificate-type profiles.",
@@ -121,6 +121,14 @@
     "policy_iv_multipurpose": {
       "value": "2.23.140.1.5.4.2",
       "description": "CA/Browser Forum S/MIME BR reserved policy identifier, individual-validated multipurpose (SBR 7.1.6.1)"
+    },
+    "idAdCaIssuers": {
+      "value": "1.3.6.1.5.5.7.48.2",
+      "description": "id-ad-caIssuers"
+    },
+    "idAdOcsp": {
+      "value": "1.3.6.1.5.5.7.48.1",
+      "description": "id-ad-ocsp"
     },
     "idKpClientAuth": {
       "value": "1.3.6.1.5.5.7.3.2",
@@ -316,7 +324,9 @@
         "description": "SHOULD be present; SHALL NOT be marked critical. id-ad-caIssuers SHOULD be present; id-ad-ocsp MAY be present. Strict: when provided, every accessMethod SHALL use the HTTP scheme.",
         "accessDescriptions": [
           {
-            "method": "caIssuers",
+            "accessMethod": {
+              "valueEq": "%idAdCaIssuers%"
+            },
             "alwaysPresent": false,
             "clause": "7.1.2.3.c.2",
             "accessLocation": {
@@ -326,7 +336,9 @@
             }
           },
           {
-            "method": "ocsp",
+            "accessMethod": {
+              "valueEq": "%idAdOcsp%"
+            },
             "alwaysPresent": false,
             "clause": "7.1.2.3.c.1",
             "accessLocation": {
@@ -549,11 +561,11 @@
         "description": "SHALL be present. Multipurpose: id-kp-emailProtection SHALL be present; id-kp-serverAuth, id-kp-codeSigning, id-kp-timeStamping and anyExtendedKeyUsage SHALL NOT be present. Per Ballot SMC018, effective July 1, 2027 only id-kp-emailProtection (mandatory) and id-kp-clientAuth (optional) are permitted. This block models the July 2027 state; until then other values (for example document signing EKUs) MAY still be present and will be reported as undocumented rather than as violations.",
         "purposes": [
           {
-            "oid": "%idKpEmailProtection%",
+            "valueEq": "%idKpEmailProtection%",
             "clause": "7.1.2.3.f"
           },
           {
-            "oid": "%idKpClientAuth%",
+            "valueEq": "%idKpClientAuth%",
             "alwaysPresent": false,
             "clause": "7.1.2.3.f",
             "description": "Optional; the only additional EKU permitted from July 1, 2027 (SMC018)."
@@ -567,7 +579,7 @@
         "description": "SHALL be present. Strict: id-kp-emailProtection SHALL be present; other values SHALL NOT be present.",
         "purposes": [
           {
-            "oid": "%idKpEmailProtection%",
+            "valueEq": "%idKpEmailProtection%",
             "clause": "7.1.2.3.f"
           }
         ]
